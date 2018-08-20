@@ -2,14 +2,34 @@ console.log("Starting notes: app.js");
 
 const fs = require('fs');
 const os = require('os');
+const yargs = require('yargs');
+
 const notes = require('./notes.js');
-const input = require('readline-sync');
 
-var newnote=input.question("What is your note?");
+var args = yargs.argv;
+var command = args._[0];
 
-notes.add(newnote+"\n");
+// console.log(args);
 
-console.log(notes.read());
 
-var user = os.userInfo();
+switch (command) {
+    case 'read':
+        notes.readNote(args.title);
+        break;
 
+    case 'list':
+       notes.listAll();
+        break;
+    
+    case 'add':
+        notes.addNote(args.title,args.body);
+        break;
+
+    case 'remove':
+        notes.removeNote(args.title);
+        break;
+
+    default: 
+            console.log("Command not recognised");
+        break;
+}
