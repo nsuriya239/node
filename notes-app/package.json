@@ -11,6 +11,6 @@
   "dependencies": {
     "arraylist": "^0.1.0",
     "collections": "^5.1.5",
-    "yargs": "^12.0.1"
+    "yargs": "^17.7.2"
   }
 }
